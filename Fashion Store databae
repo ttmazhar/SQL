@@ -1,0 +1,17 @@
+--Create fashion store database
+CREATE TABLE store (id INTEGER PRIMARY KEY, item TEXT, quantity INTEGER, sold INTEGER, price INTEGER);
+
+INSERT INTO store VALUES (1, "pants", 10, 7, 1);
+INSERT INTO store VALUES (2, "shirts", 20, 19, 5);
+INSERT INTO store VALUES (3, "skirts", 5, 7, 8);
+INSERT INTO store VALUES (4, "shorts", 15, 10, 6);
+INSERT INTO store VALUES (5, "hats", 25, 15, 9);
+INSERT INTO store VALUES (6, "jackets", 19, 5, 28);
+
+
+--Display the database oredered by price.
+SELECT * FROM store
+ORDER BY price asc;
+
+
+
