@@ -87,4 +87,42 @@ which you can compute by multiplying and rounding the fraction_completed column.
   HAVING avg_worldwide > 2000
   ;
 
+--Select all the studios with MIN domestic number.
+  SELECT Studio, MIN(Domestic) AS min_domestic
+  FROM topmovies
+  GROUP BY Studio
+  ;
+  
+--Select the movie title that is in max in Rank.
+  SELECT Title, MAX(Rank) AS max_rank
+  FROM topmovies
+  ;
+  
+--Select titles that have WB studio, ordered by their rank.
+  SELECT Rank, Title, Studio FROM topmovies
+  GROUP BY Title
+  HAVING Studio='WB'
+  ORDER BY Rank
+  ;
 
+--Select all ranks and titles and add a row 'movies_grades' with Overseas values.
+'A' for more than 1500, 'B' for more than 1000, 'C' for more than 500 and rest of them 'D'.
+  SELECT Rank, Title, Overseas
+    CASE
+      WHEN Overseas > 1500 THEN 'A'
+      WHEN Overseas > 1000 THEN 'B'
+      WHEN Overseas > 500 THEN 'C'
+      ELSE 'D'
+   END as 'movie_grade'
+FROM topmovies
+;
+
+--Select titles showing that are in Fox Studiio and ranked in top 50.
+  SELECT Rank, Title FROM topmovies
+  WHERE Studio='Fox' AND Rank <50
+  ;
+  
+--  Select titles that are with WB studio or released after 2005, showing recent titles first.
+  SELECT Rank, Title, Year FROM topmovies
+  WHERE Studio='WB' OR Year > 2005
+  ORDER BY Year DESC;
