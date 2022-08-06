@@ -13,5 +13,8 @@ INSERT INTO store VALUES (6, "jackets", 19, 5, 28);
 SELECT * FROM store
 ORDER BY price asc;
 
+--Find out how many items are sold.
+SELECT SUM(sold) FROM store;
+
 
 
