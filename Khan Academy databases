@@ -80,7 +80,6 @@ which you can compute by multiplying and rounding the fraction_completed column.
   LIMIT 20
   ;
 
-
 --Select Title and average 'Worldwide' row as 'avg_worldwide' which is grouped by Title and is more than 2000.
   SELECT Title, AVG(Worldwide) AS 'avg_worldwide' FROM topmovies
   GROUP BY Title
@@ -122,7 +121,49 @@ FROM topmovies
   WHERE Studio='Fox' AND Rank <50
   ;
   
---  Select titles that are with WB studio or released after 2005, showing recent titles first.
+--Select titles that are with WB studio or released after 2005, showing recent titles first.
   SELECT Rank, Title, Year FROM topmovies
   WHERE Studio='WB' OR Year > 2005
-  ORDER BY Year DESC;
+  ORDER BY Year DESC
+  ;
+
+
+--Insert one more row in persons and then one more row in hobbies that is related to the newly inserted person.
+  INSERT INTO persons (name, age) VALUES ("Nancy", 30);
+  
+  INSERT INTO hobbies (person_id, name) VALUES (5, "walking");
+
+--Select the 2 tables with a join so that you can see each person's name next to their hobby.
+  SELECT p.name, h.name
+  FROM persons AS p
+  JOIN hobbies AS h
+  ON p.id=h.person_id
+  ;
+  
+--Add an additional query that shows only the name and hobbies of 'Bobby McBobbyFace', using JOIN combined with WHERE.
+  select p.name,h.name
+  from persons p
+  join hobbies h
+  on p.id=h.person_id
+  WHERE p.name='Bobby McBobbyFace'
+  ;
+
+--Come up with a query that lists the name and email of every customer followed by the item and price of orders they've made.
+  SELECT c.name, c.email, o.item, o.price
+  FROM customers c
+  LEFT OUTER JOIN orders o
+  ON c.id=o.customer_id
+  ;
+    
+ --Create another query that will result in one row per each customer, with their name, email, and total amount of money they've spent on orders.
+ Sort the rows according to the total money spent, from the most spent to the least spent.
+  SELECT c.name, c.email, sum(o.price) as spent
+  FROM customers c
+  LEFT OUTER JOIN orders o
+  ON c.id=o.customer_id
+  GROUP BY c.name
+  ORDER BY spent desc
+  ;
+  
+--
+
