@@ -227,8 +227,11 @@ FROM topmovies
 --Show both spouses' name.
   SELECT a.name, b.name
   FROM famous a
-  JOIN famous b
-  ON a.id=b.marriedto_id;
+  LEFT JOIN famous b
+  ON a.id=b.marriedto_id
+  ;
+  
+--
 
 
 
