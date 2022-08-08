@@ -185,5 +185,54 @@ FROM topmovies
   JOIN persons a
   ON a.id=friends.person1_id
   JOIN persons b
-  ON b.id=friends.person2_id;
+  ON b.id=friends.person2_id
+  ;
+  
+--Make your own table with some small set of “famous people”, then make more tables about things they do and join those to create nice human readable lists.
+  CREATE TABLE famous (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                       name TEXT,
+                       occupation TEXT,
+                       movies TEXT,
+                       debut_year INTEGER,
+                       marriedto_id INTEGER);
+
+  INSERT INTO famous VALUES (1, "Blake Lively", "Actress", "Gossip Girl", 2014, 2);
+  INSERT INTO famous VALUES (2, "Ryan Reynolds", "Actor", "Ordinary Magic", 1993, 1);
+  INSERT INTO famous VALUES (3, "Jennifer Lopez", "Singer/Actress", "My Little Girl", 1986, 4);
+  INSERT INTO famous VALUES (4, "Alex Rodrigez", "Sportsman", "Texas Rangers", 2001, 3);
+  INSERT INTO famous VALUES (5, "John Legend", "Singer", NULL, 2005, 6);
+  INSERT INTO famous VALUES (6, "Chrissy Teigen", "Model", NULL, 2010, 5);
+  INSERT INTO famous VALUES (7, "Emily Blunt", "Actress", "The Royal Family", 2001, 8);
+  INSERT INTO famous VALUES (8, "John Krasinski", "Actor", "Ben", 2002, 7)
+  ;
+  
+--Make anothe table with more information with table name "celebrity".
+  CREATE TABLE celebrity (id INTEGER PRIMARY KEY,
+                        total_movies INTEGER, 
+                        married_year INTEGER,
+                        spouse_id INTEGER,
+                        latest_release TEXT, 
+                        last_release_year INTEGER,
+                        most_popular TEXT);
+
+  INSERT INTO celebrity VALUES (1, 20, 2012, 2, "Seconds", 2022, "Accepted");
+  INSERT INTO celebrity VALUES (2, 15, 2012, 1, "Free Guy", 2021, "Deadpool");
+  INSERT INTO celebrity VALUES (3, 17, 2019, 4, "Enough", 2002, "Parker");
+  INSERT INTO celebrity VALUES (4, 26, 2019, 3, NULL, NULL, NULL);
+  INSERT INTO celebrity VALUES (5, 50, 2013, 6, "Eighth Studio", 2022, "All of me");
+  INSERT INTO celebrity VALUES (6, 19, 2013, 5, "Lip Sync Battle", 2022, "Chrissy's Court");
+  INSERT INTO celebrity VALUES (7, 11, 2010, 8, "A Quiet Place Part II", 2021, "Sicario")
+  ;
+  
+--Show both spouses' name.
+  SELECT a.name, b.name
+  FROM famous a
+  JOIN famous b
+  ON a.id=b.marriedto_id;
+
+
+
+
+
+
 
