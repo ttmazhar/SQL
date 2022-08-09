@@ -47,3 +47,32 @@ FROM BIT_DB.FebSales Feb
 LEFT JOIN BIT_DB.customers cust
 ON FEB.orderid=cust.order_id
 WHERE Feb.Quantity>2
+
+##8. Show a list of orderdates with dates from 02/13/19 00:00 to 02/13/19 00:00.
+SELECT orderdate
+FROM BIT_DB.FebSales
+WHERE orderdate between '02/13/19 00:00' AND '02/13/19 00:00'
+
+##9. What's the location that was placed at 02/18/19 01:35?
+SELECT location
+FROM BIT_DB.FebSales 
+WHERE orderdate = '02/18/19 01:35'
+
+##10. How many products where sold any date after 02/18/19YY?
+SELECT sum(quantity)
+FROM BIT_DB.FebSales 
+WHERE orderdate like '02/18/19%'
+
+##11. List of orderdates of February.
+SELECT orderdate from BIT_DB.FebSales
+
+##12. List of products that has 'Batteries' written anywhere in their name.
+SELECT distinct Product
+FROM BIT_DB.FebSales
+WHERE Product like '%Batteries%'
+
+##13. Which are products have price that end with '.99'?
+SELECT distinct Product, Price
+FROM BIT_DB.FebSales 
+WHERE Price like '%.99'
+
