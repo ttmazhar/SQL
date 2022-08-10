@@ -1,0 +1,21 @@
+# The following SQL code was written by me to solve the mystery on https://mystery.knightlab.com/
+
+# First, find the relevant crime scene report for a murder taking place on Jan 15, 2018 in SQL City 
+SELECT * FROM crime_scene_report
+   WHERE date = 20180115 AND city = "SQL City" AND type = "murder";
+   
+   
+# Identify 2 witnesses.
+SELECT * FROM person
+  WHERE address_street_name='Northwestern Dr'
+  ORDER BY address_number DESC LIMIT 1;
+
+
+SELECT * FROM person
+  WHERE name LIKE '%Annabel%'
+  AND address_street_name='Franklin Ave';
+  
+  
+ # Write a query that shows the interview transcripts for our two subjects.
+   
+              
