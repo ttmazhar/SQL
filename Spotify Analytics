@@ -83,3 +83,6 @@ SELECT artist_name
   GROUP BY artist_name
   ORDER BY artist_value DESC LIMIT 1;
 
+
+#Which song is the longest?
+SELECT artist_name, track_name, MAX(duration_ms) FROM BIT_DB.Spotifydata;
