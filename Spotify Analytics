@@ -74,8 +74,14 @@ avg(danceability),
 avg(energy)
   FROM BIT_DB.Spotifydata
   GROUP BY artist_name, track_name;
-  
-  
+
+
+# Which of the tracks have duration starting with 21?
+SELECT artist_name, track_name, duration_ms
+  FROM BIT_DB.Spotifydata
+  WHERE duration_ms LIKE '21____%';
+
+
 #Who is the artist that shows up the most on the list?
 SELECT artist_name
 ,COUNT(artist_name) as artist_value
@@ -85,4 +91,5 @@ SELECT artist_name
 
 
 #Which song is the longest?
-SELECT artist_name, track_name, MAX(duration_ms) FROM BIT_DB.Spotifydata;
+SELECT artist_name, track_name, MAX(duration_ms)
+ FROM BIT_DB.Spotifydata;
