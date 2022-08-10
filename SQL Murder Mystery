@@ -63,3 +63,45 @@ SELECT p.name, i.transcript
   JOIN interview i
   ON p.id=i.person_id
   WHERE name = 'Jeremy Bowers';
+
+
+# He says he was hired by someone and gives a description. Use the description to narrow down her name. 
+
+SELECT person.id
+  ,person.name
+  ,drivers_license.height
+  ,drivers_license.gender
+  ,drivers_license.hair_color
+  ,drivers_license.car_make
+  ,drivers_license.car_model
+
+  FROM drivers_license
+  JOIN person
+  ON person.license_id=drivers_license.id
+  WHERE height BETWEEN 65 AND 67
+  AND hair_color = "red"
+  AND car_make = "Tesla"
+  AND car_model = "Model S";
+
+
+# Now find which of those women attended the SQL Symphony Concert 3 times in December 2017.
+
+SELECT person.name,
+  facebook_event_checkin.person_id,
+  facebook_event_checkin.event_id,
+  facebook_event_checkin.event_name,
+  facebook_event_checkin.date
+  FROM facebook_event_checkin
+  JOIN person
+  ON person.id=facebook_event_checkin.person_id
+  WHERE name = "Red Korb"
+  OR name = "Regina George"
+  OR name = "Miranda Priestly" AND event_name = "SQL Symphony Concert"
+  AND date LIKE "201712%";
+
+
+
+
+
+
+
