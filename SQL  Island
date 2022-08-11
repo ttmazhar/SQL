@@ -1,4 +1,4 @@
-# The following SQL code was written by me to solved the quest of surving on an island on http://wwwlgis.informatik.uni-kl.de/cms/courses/informationssysteme/sqlisland/
+# The following SQL code was written by me to resque the pilot on an island on http://wwwlgis.informatik.uni-kl.de/cms/courses/informationssysteme/sqlisland/
 
 # How can I see a list of all inhabitants?
   SELECT * FROM inhabitant;
