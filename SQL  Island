@@ -20,7 +20,6 @@
     AND state = "friendly";
     
     
-    
  # What's my personid? My name is Stranger.
    SELECT personid from inhabitant
     WHERE name = "Stranger";
@@ -31,12 +30,84 @@
    WHERE name = "Stranger";
    
    
-   
  # Make a list of all items that don't belong to anyone.
   SELECT * FROM item
   WHERE owner is NULL;
   
   
- 
  # Collect all the ownerless items.
+   UPDATE item SET owner = 20 WHERE owner is NULL;
+    
+    
+ # Now list all of the items I have!
+   SELECT * FROM item
+    WHERE owner = 20;
+    
+    
+ # Find a friendly inhabitant who is either a dealer or a merchant.
+  SELECT * FROM inhabitant
+   WHERE state = "friendly"
+   AND (job = "merchant" OR job = "dealer");
+   
+   
+# Give a villager the teapot and ring. Her personid is 15.
+  UPDATE item SET owner = 15 WHERE item = "teapot"
+  OR item = "ring";
+  
+  
+  
+  # Change the name from Stranger to May.
+    UPDATE inhabitant SET name = "May" WHERE name = "Stranger";
+    
+    
+    
+  # Find a baker who you can work for. Show the richest baker is on top.
+  SELECT * FROM inhabitant
+   WHERE job = "baker"
+   ORDER BY gold DESC;
+   
+   
+   
+ # Is there a pilot on this island.
+  SELECT * FROM inhabitant
+   WHERE job = "pilot";
+   
+   
+   
+# List of everything in Table village.
+  SELECT * FROM village;
+  
+  
+# Find the name of the chief of Onionville.
+  SELECT inhabitant.name 
+   FROM inhabitant
+   LEFT JOIN village
+   ON inhabitant.personid = village.chief
+   WHERE village.name = "Onionville";
+   
+   
+# Calculate total amount of gold combining dealers, merchants and bakers.
+  SELECT SUM(inhabitant.gold)
+   FROM inhabitant
+   WHERE job = "baker" OR job = "dealer" OR job = "merchant";
+  
+  
+  
+# How much gold do different inhabitants have on average, depending on their state.
+  SELECT state, SUM(inhabitant.gold)
+   ,AVG(inhabitant.gold)
+   FROM inhabitant
+   GROUP BY state
+   ORDER BY AVG(inhabitant.gold);
+   
+   
+   
+# Remove all the information of Dirty Diane from the table
+  DELETE FROM inhabitant  WHERE name = "Dirty Diane";
+  
+  
+  
+# Change pilot's state.
+  UPDATE inhabitant SET state = "friendly" WHERE job = "pilot";
+
     
