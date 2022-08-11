@@ -1,0 +1,42 @@
+# The following SQL code was written by me to solved the quest of surving on an island on http://wwwlgis.informatik.uni-kl.de/cms/courses/informationssysteme/sqlisland/
+
+# How can I see a list of all inhabitants?
+  SELECT * FROM inhabitant;
+  
+  
+# Who are friendly on this island?
+   SELECT * FROM inhabitant
+    WHERE state = "friendly";
+   
+   
+# Find a friendly weaponsmith to forge me a sword.
+  SELECT * FROM inhabitant
+   WHERE state = "friendly" AND job = "weaponsmith";
+   
+   
+ # Show the list of all kind of smiths who are friendly.
+   SELECT * FROM inhabitant
+    WHERE job LIKE "%smith"
+    AND state = "friendly";
+    
+    
+    
+ # What's my personid? My name is Stranger.
+   SELECT personid from inhabitant
+    WHERE name = "Stranger";
+    
+    
+ # How much gold do I have?
+   SELECT SUM(gold) FROM inhabitant
+   WHERE name = "Stranger";
+   
+   
+   
+ # Make a list of all items that don't belong to anyone.
+  SELECT * FROM item
+  WHERE owner is NULL;
+  
+  
+ 
+ # Collect all the ownerless items.
+    
