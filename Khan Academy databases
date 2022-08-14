@@ -244,7 +244,42 @@ FROM topmovies
   
   
 --Now assign each item a price, using UPDATE - item 1 should be 10 dollars, item 2 should be 20 dollars, item 3 should be 30 dollars.
-  
+  UPDATE clothes SET price = 10 WHERE id = 1;
+  UPDATE clothes SET price = 20 WHERE id = 2;
+  UPDATE clothes SET price = 30 WHERE id = 3;
+
+
+--Now insert a new item into the table that has all three attributes filled in, including 'price'.
+  INSERT INTO clothes (type, design, price)
+   VALUES ("pant", "black", 40);
+
+
+--CREATE a table to store the data.
+INSERT a few example rows in the table.
+Use an UPDATE to emulate what happens when you edit data in the app.
+Use a DELETE to emulate what happens when you delete data in the app.
+
+  /* What does the app's SQL look like? */
+
+CREATE TABLE cloth_store (id integer Primary Key,
+                          item text,
+                          quantity integer,
+                          price integer,
+                          repurchased text);
+                          
+                        
+INSERT INTO cloth_store (id, item, quantity, price, repurchased) VALUES (1, "shirt", 5, 10, "yes");
+
+INSERT INTO cloth_store (id, item, quantity, price, repurchased) VALUES (2, "pant", 10, 20, "no");
+
+INSERT INTO cloth_store (id, item, quantity, price, repurchased) VALUES (3, "jeans", 30, 40, "no");
+
+UPDATE cloth_store SET item = "denim" WHERE id = 3;
+
+DELETE FROM cloth_store WHERE id = 3;
+
+SELECT * FROM cloth_store;
+
 
 
 
