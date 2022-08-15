@@ -72,15 +72,37 @@
    FROM chinook.Invoice_items i
    JOIN chinook.Tracks t ON i.TrackId = t.TrackId;
    
+  
+  
+#11. Show all the track names with their media types.
+  SELECT t.Name, m.Name as Media
+   FROM tracks t
+   JOIN media_types m
+   ON t.MediaTypeId = m.MediaTypeId;
    
    
-#11. Write a query that includes the purchased track name AND artist name with each invoice line item.
+#12. Whats the AVG price of tracks.
+  SELECT AVG(UnitPrice)
+   FROM tracks;
+   
+   
+   
+#13. Find out the employees that provided support to each customer.
+  SELECT cust.FirstName, cust.LastName, emp.FirstName as employee
+   FROM customers cust
+   JOIN employees emp
+   ON cust.SupportRepId=emp.EmployeeId
+   WHERE emp.Title = 'Sales Support Agent';  
+   
+   
+ 
+#. Write a query that includes the purchased track name AND artist name with each invoice line item.
   
   
   
   
   
-#12. Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
+#. Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
   SELECT t.Name as Track_Name, a.Title as Album_Title, m.Name as Media_Type, g.Name as Genre
    FROM tracks t
    JOIN albums a ON t.AlbumId = a.AlbumId
@@ -89,7 +111,7 @@
    
    
    
-#13. Show the total sales made by each sales agent.
+#. Show the total sales made by each sales agent.
   SELECT e.FirstName, e.LastName,
    ROUND(SUM(Inv.Total), 2) as 'Total Sales' 
    FROM employees e
@@ -100,7 +122,7 @@
    
    
    
-#14. Which sales agent made the most in sales in 2009?
+#. Which sales agent made the most in sales in 2009?
   SELECT e.FirstName, e.LastName,
    ROUND(SUM(Inv.Total), 2) as 'Total Sales' 
    FROM Employees e
