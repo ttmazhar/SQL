@@ -89,7 +89,27 @@
    
    
    
-#13. 
+#13. Show the total sales made by each sales agent.
+  SELECT e.FirstName, e.LastName,
+   ROUND(SUM(Inv.Total), 2) as 'Total Sales' 
+   FROM employees e
+   JOIN customer cust ON cust.SupportRepId = e.EmployeeId
+   JOIN invoices Inv ON Inv.CustomerId = cust.CustomerId
+   WHERE e.Title = 'Sales Support Agent'
+   GROUP BY e.FirstName;
+   
+   
+   
+#14. Which sales agent made the most in sales in 2009?
+  SELECT e.FirstName, e.LastName,
+   ROUND(SUM(Inv.Total), 2) as 'Total Sales' 
+   FROM Employees e
+   JOIN Customers cust ON cust.SupportRepId = e.EmployeeId
+   JOIN Invoices Inv ON Inv.CustomerId = cust.CustomerId
+   WHERE e.Title = 'Sales Support Agent' 
+   AND Inv.InvoiceDate LIKE '2009%' 
+GROUP BY emp.FirstName
+ORDER BY (round(sum(Inv.Total), 2))  DESC LIMIT 1;
 
 
 
