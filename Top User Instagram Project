@@ -8,5 +8,70 @@
   SELECT Name, MIN(Rank), Category FROM Instagram;
   
    
-#3. 
-  
+#3. Who has the most Followers?
+  SELECT Name, MIN(Followers), Category FROM Instagram;
+
+
+#4. List 5 users with most engagemnet and live in the USA.
+  SELECT Name, MAX(Engagement), Audience_Country FROM Instagram
+   WHERE Audience_Counry = 'United States'
+   ORDER BY Engagement DESC
+   LIMIT 5;
+
+
+#5. Show the users who has 'Music' in Category.
+  SELECT * FROM Instagram
+   WHERE Category = 'Music'
+   GROUP BY Name;
+
+
+#6. Who has the least followers and live in the USA?
+  SELECT Name, MIN(Followers)
+   FROM Instagram
+   WHERE Audience_Engagement = 'United States';
+
+
+#7. Show Zendaya's instagram data.
+  SELECT * FROM Instagram
+   WHERE Name = 'zendaya';
+ 
+ 
+#8. Show users who has 'Sports' anywhere in their category.
+  SELECT * FROM Instagram
+  WHERE Category LIKE '%Sports%';
+
+
+#9. How many Categories are there in Instagram table?
+  SELECT COUNT(Category) FROM Instagram
+   GROUP BY Name;
+
+
+#10. List of users with 'Fashion Beauty' and rank is more than 500.
+  SELECT * FROM Instagram
+   Where Category = 'FashionBeauty' AND Rank > 500;
+
+
+#11. List of users with 'Fashion Beauty' or rank is more than 500.
+  SELECT * FROM Instagram
+   Where Category = 'Sports with a ball' OR Rank > 500;
+
+
+#12. How many followers does Leomessi have?
+  SELECT Followers FROM Instagram
+   Where Name = 'Leomessi';
+
+
+#13. Who has 30M followers?
+   SELECT * FROM Instagram
+   WHERE Followers LIKE '%30M%';
+
+
+#14. Update a new user Name to Instagram table with Tom Cruise on the place of AnushkaSharma.
+  UPDATE Instagram
+  SET Name = 'tomcruise'
+  WHERE Name = 'anushkasharma';
+
+
+#15. Delete the column with 'arminzareeiofficial'
+  DELETE FROM Instagram
+   WHERE Name = 'arminzareeiofficial';
