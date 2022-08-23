@@ -1,0 +1,12 @@
+#In this SQL code, I'm querying a database that's holding Top 1000 Instagramers data to answer questions about the data. 
+
+#1. Show all the data from Instagram table.
+  SELECT * FROM Instagram;
+  
+  
+#2. Who is the top rank user in Instagram table?
+  SELECT Name, MIN(Rank), Category FROM Instagram;
+  
+   
+#3. 
+  
