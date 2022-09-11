@@ -1,6 +1,6 @@
-/* creating a database on my favorite app that stores data from users */
+# Creating a database on my favorite app that stores data from users.
 
-/* creating the table */
+# Creating the table.
 CREATE TABLE best_fiends (player_id INTEGER PRIMARY KEY, 
 profile_name TEXT,
 diamonds INTEGER,
@@ -18,18 +18,19 @@ INSERT INTO best_fiends VALUES (6, "Destiny86", 80, 60, 8, 3);
 INSERT INTO best_fiends VALUES (7, "JumboWumbo", 12, 50, 2, 1);
 INSERT INTO best_fiends VALUES (8, "BDizzle08", 1000,2000, 20, 15);
 
-/* updating information using different 'WHERE' */
-UPDATE best_fiends SET high_score = 25
-WHERE player_id = 8;
-UPDATE best_fiends SET hours_played = 10
-WHERE profile_name = "ChromeStatus";
+
+# Updating information using different 'WHERE'.
+ UPDATE best_fiends SET high_score = 25
+  WHERE player_id = 8;
+  UPDATE best_fiends SET hours_played = 10
+  WHERE profile_name = "ChromeStatus";
 UPDATE best_fiends SET diamonds = 150
-WHERE player_id = 1;
+  WHERE player_id = 1;
 
 SELECT * FROM best_fiends;
 
-/* deleting a user who uninstalled the app */
+# Deleting a user who uninstalled the app.
 DELETE FROM best_fiends 
-WHERE profile_name = "JumboWumbo";
+  WHERE profile_name = "JumboWumbo";
 
 SELECT * FROM best_fiends;
