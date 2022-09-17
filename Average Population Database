@@ -1,0 +1,81 @@
+# The following SQL code was written by me to solve the problems on https://www.hackerrank.com/domains/sql
+
+#1. Write a query identifying the type of each record in the TRIANGLES table using its three side lengths.
+ SELECT CASE
+           WHEN (A+B<=C OR B+C<=A OR C+A<=B) THEN 'Not A Triangle'
+           WHEN (A=B AND B=C) THEN 'Equilateral'
+           WHEN (A=B OR B=C OR A=C) THEN 'Isosceles'
+           ELSE "Scalene"
+         END 
+ FROM TRIANGLES;
+
+
+#2. Query the average population for all cities in CITY, rounded down to the nearest integer.
+ SELECT ROUND(AVG(POPULATION))
+ FROM CITY;
+
+
+#3. Query the sum of the populations for all Japanese cities in CITY. The COUNTRYCODE for Japan is JPN.
+ SELECT SUM(POPULATION)
+ FROM CITY
+ WHERE COUNTRYCODE = 'JPN';
+
+
+#4. Query the difference between the maximum and minimum populations in CITY.
+ SELECT (MAX(population)-MIN(population))
+ FROM CITY;
+
+
+#5. Write a query calculating the amount of error (i.e.: actual-miscalculated average monthly salaries), and round it up to the next integer.
+ SELECT CEIL(AVG(Salary)-AVG(REPLACE(Salary,'0','')))
+ FROM EMPLOYEES;
+ 
+ 
+#6. Write a query to find the maximum total earnings for all employees as well as the total number of employees who have maximum total earnings.
+Then print these values as 2 space-separated integers.
+ SELECT MAX(salary*months), COUNT(salary*months)
+ FROM EMPLOYEE
+ GROUP BY salary*months DESC
+ LIMIT 1;
+
+
+#7. Query the following two values from the STATION table:
+The sum of all values in LAT_N rounded to a scale of 2 decimal places.
+The sum of all values in LONG_W rounded to a scale of 2 decimal places.
+ SELECT ROUND(SUM(LAT_N), 2), ROUND(SUM(LONG_W), 2)
+ FROM STATION;
+
+
+#8. Query the smallest Northern Latitude (LAT_N) from STATION that is greater than 38.7780. Round your answer to 4 decimal places.
+ SELECT ROUND(MIN(LAT_N), 4)
+ FROM STATION
+ WHERE LAT_N > 38.7780;
+ 
+ 
+#9. Query the Western Longitude (LONG_W)where the smallest Northern Latitude (LAT_N) in STATION is greater than 38.7780. Round your answer to 4 decimal places.
+ SELECT ROUND(LONG_W, 4)
+ FROM STATION
+ WHERE LAT_N > 38.7780
+ ORDER BY LAT_N
+ LIMIT 1; 
+ 
+ 
+#10. Query the Manhattan Distance between points P1 and P2 and round it to a scale of 4 decimal places.
+ SELECT ABS(ROUND((MIN(LAT_N) - MAX(LAT_N))
+        + (MIN(LONG_W) - MAX(LONG_W)),4))
+ FROM STATION;
+ 
+ 
+#11. Query the Euclidean Distance between points P1 and P2 and format your answer to display 4 decimal digits.
+ SELECT ROUND(
+        SQRT(
+            POWER((MIN(lat_n) - MAX(lat_n)), 2)
+            + 
+            POWER((MIN(long_w) - MAX(long_w)), 2)
+            )
+            , 4)
+ FROM STATION;
+ 
+ 
+ #12. 
+ 
