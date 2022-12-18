@@ -33,6 +33,7 @@ time_signature integer NOT NULL
 # First I selected the whole table. Just to have an overall view of the table that I am working with.
 SELECT * FROM BIT_DB.Spotifydata;
 
+
 # How many times does Dua Lipa appear on the list?
 SELECT COUNT(artist_name)
   FROM BIT_DB.Spotifydata
