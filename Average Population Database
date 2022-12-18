@@ -77,5 +77,3 @@ The sum of all values in LONG_W rounded to a scale of 2 decimal places.
  FROM STATION;
  
  
- #12. 
- 
