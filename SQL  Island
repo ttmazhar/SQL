@@ -78,6 +78,7 @@
   SELECT * FROM village;
   
   
+  
 # Find the name of the chief of Onionville.
   SELECT inhabitant.name 
    FROM inhabitant
