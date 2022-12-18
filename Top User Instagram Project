@@ -75,3 +75,6 @@
 #15. Delete the column with 'arminzareeiofficial'
   DELETE FROM Instagram
    WHERE Name = 'arminzareeiofficial';
+   
+   
+   
