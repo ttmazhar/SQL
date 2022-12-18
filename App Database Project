@@ -1,4 +1,4 @@
-# Creating a database on my favorite app that stores data from users
+# Creating a database on my favorite app that stores data from users.
 
 #1 Creating the table.
 CREATE TABLE best_fiends (player_id INTEGER PRIMARY KEY, 
