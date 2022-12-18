@@ -1,4 +1,4 @@
---Create fashion store database
+-- Create fashion store database
 CREATE TABLE store (id INTEGER PRIMARY KEY, item TEXT, quantity INTEGER, sold INTEGER, price INTEGER);
 
 INSERT INTO store VALUES (1, "pants", 10, 7, 1);
